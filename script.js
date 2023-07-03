@@ -1,11 +1,24 @@
 const form = document.getElementById("form");
+const username = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 
+function showError(p1,p2){
+    const formControl= p1.parentElement;
+    formControl.className = "form-controll error"
+}
+
 
 form.addEventListener("submit",function(e) {
     e.preventDefault();
-    console.log(e)
+  console.log(username.value)
+ 
+  if(username.value===""){
+    showError(username, "FILL OUT!!")
+  }else{
+    console.log("yes")
+  }
+ 
 });
 
