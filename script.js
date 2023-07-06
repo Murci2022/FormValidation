@@ -3,6 +3,8 @@ const username = document.getElementById("username");
 const emailInput = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
+const inputArr = [username,emailInput,password,password2]
+
 
 /* Show input error */
 function showError(input,message){
@@ -31,42 +33,30 @@ function validateEmail(emailInput) {
   return emailPattern.test(String(emailInput.value).toLowerCase());
 }
 
+/* check required fields */
+function checkRequired(inputArr){
+  inputArr.forEach(function(input){
+   if(input.value ===""){
+    showError(input, `${getFieldName(input)} is required`)
+   }else{
+    showSuccess(input)
+   }
+  })
+}
+
+/* Get fieldname */
+function getFieldName(input){
+  return input.id.slice(0,1).toUpperCase()+input.id.slice(1).toLowerCase();
+}
+
 
 /* Event Listeners */
 form.addEventListener("submit",function(e) {
     e.preventDefault();
   console.log(username.value)
 
-   //username check
-   if(username.value===""){
-    showError(username, "Username is required")
-  }else{
-    showSuccess(username)
-  }
-  //email check
-  if(emailInput.value === ""){
-    showError(emailInput,"Email is required")
-  }
-  else if(!validateEmail(email)){
-    showError(emailInput,"Not a valid email")
-   
-
-  }else{
-    showSuccess(emailInput)
-  }
-  //password check
-  if(password.value === ""){
-    showError(password,"Password is required")
-  }else{
-    showSuccess(password)
-  }
-
-  //password2 check
-  if(password2.value ===""){
-    showError(password2,"Password 2 is required")
-  }else{
-    showSuccess(password2)
-  }
+   checkRequired(inputArr)
+  
 
 
  
