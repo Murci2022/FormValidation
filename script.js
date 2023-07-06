@@ -12,6 +12,8 @@ function showError(input,message){
     small.innerText = message
 }
 
+/* Show input success outline */
+
 function showSuccess(input){
   console.log("success")
   const formControl= input.parentElement;
