@@ -27,10 +27,17 @@ form.addEventListener("submit",function(e) {
     e.preventDefault();
   console.log(username.value)
   //password check
-  if(password === ""){
+  if(password.value === ""){
     showError(password,"Password is required")
   }else{
     showSuccess(password)
+  }
+
+  //password2 check
+  if(password2.value ===""){
+    showError(password2,"Password 2 is required")
+  }else{
+    showSuccess(password2)
   }
 
  //username check
