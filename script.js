@@ -1,6 +1,6 @@
 const form = document.getElementById("form");
 const username = document.getElementById("username");
-const email = document.getElementById("email");
+const emailInput = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 
@@ -21,6 +21,22 @@ function showSuccess(input){
 
 }
 
+function validateEmail(email) {
+  // Regular expression pattern for email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  // Test the email against the pattern
+  return emailPattern.test(String(email).toLocaleLowerCase());
+}
+
+function validateEmail(emailInput) {
+  // Regular expression pattern for email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  // Test the email value against the pattern
+  return emailPattern.test(String(emailInput.value).toLowerCase());
+}
+
 
 /* Event Listeners */
 form.addEventListener("submit",function(e) {
@@ -34,10 +50,15 @@ form.addEventListener("submit",function(e) {
     showSuccess(username)
   }
   //email check
-  if(email.value === ""){
-    showError(email,"Email is required")
+  if(emailInput.value === ""){
+    showError(emailInput,"Email is required")
+  }
+  else if(!validateEmail(email)){
+    showError(emailInput,"Not a valid email")
+   
+
   }else{
-    showSuccess(email)
+    showSuccess(emailInput)
   }
   //password check
   if(password.value === ""){
