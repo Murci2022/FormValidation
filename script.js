@@ -4,20 +4,31 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 
+/* Show input error */
 function showError(input,message){
-    const formControl= p1.parentElement;
-    formControl.className = "form-controll error"
+    const formControl= input.parentElement;
+    formControl.className = "form-control error"
+    const small = formControl.querySelector("small")
+    small.innerText = message
+}
+
+function showSuccess(input){
+  console.log("success")
+  const formControl= input.parentElement;
+  formControl.className = "form-control success"
+
 }
 
 
+/* Event Listeners */
 form.addEventListener("submit",function(e) {
     e.preventDefault();
   console.log(username.value)
  
   if(username.value===""){
-    showError(username, "FILL OUT!!")
+    showError(username, "Username is required")
   }else{
-    console.log("yes")
+    showSuccess(username)
   }
  
 });
