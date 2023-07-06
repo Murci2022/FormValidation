@@ -26,6 +26,19 @@ function showSuccess(input){
 form.addEventListener("submit",function(e) {
     e.preventDefault();
   console.log(username.value)
+
+   //username check
+   if(username.value===""){
+    showError(username, "Username is required")
+  }else{
+    showSuccess(username)
+  }
+  //email check
+  if(email.value === ""){
+    showError(email,"Email is required")
+  }else{
+    showSuccess(email)
+  }
   //password check
   if(password.value === ""){
     showError(password,"Password is required")
@@ -40,12 +53,7 @@ form.addEventListener("submit",function(e) {
     showSuccess(password2)
   }
 
- //username check
-  if(username.value===""){
-    showError(username, "Username is required")
-  }else{
-    showSuccess(username)
-  }
+
  
 });
 
