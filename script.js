@@ -25,12 +25,16 @@ function showSuccess(input){
 
 
 
-function validateEmail(emailInput) {
+function checkEmail(emailInput) {
   // Regular expression pattern for email validation
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
   // Test the email value against the pattern
-  return emailPattern.test(String(emailInput.value).toLowerCase());
+  if(emailPattern.test(emailInput.value)){
+   showSuccess(emailInput)
+  }else{
+    showError(emailInput,"Email is not valid")
+  }
 }
 
 /* check required fields */
@@ -70,6 +74,7 @@ form.addEventListener("submit",function(e) {
    checkRequired(inputArr)
    checkLength(username,3,15)
    checkLength(password,6,25)
+   checkEmail(emailInput)
   
 
 
