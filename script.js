@@ -30,7 +30,7 @@ function checkEmail(emailInput) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
   // Test the email value against the pattern
-  if(emailPattern.test(emailInput.value)){
+  if(emailPattern.test(emailInput.value.trim())){
    showSuccess(emailInput)
   }else{
     showError(emailInput,"Email is not valid")
@@ -60,6 +60,17 @@ function checkLength(input,min,max){
   
 }
 
+//Check password match
+function checkPasswordsMatch(p1,p2){
+  console.log(p1.value)
+  console.log(typeof p2.value)
+  if(p1.value===p2.value){
+    showSuccess(password,password2)
+  }else{
+    showError(password2,"password do not match")
+  }
+}
+
 /* Get fieldname */
 function getFieldName(input){
   return input.id.slice(0,1).toUpperCase()+input.id.slice(1).toLowerCase();
@@ -75,6 +86,7 @@ form.addEventListener("submit",function(e) {
    checkLength(username,3,15)
    checkLength(password,6,25)
    checkEmail(emailInput)
+   checkPasswordsMatch(password, password2)
   
 
 
