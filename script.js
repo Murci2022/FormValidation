@@ -6,7 +6,7 @@ const password2 = document.getElementById("password2");
 const inputArr = [username,emailInput,password,password2]
 
 
-/* Show input error */
+
 function showError(input,message){
     const formControl= input.parentElement;
     formControl.className = "form-control error"
@@ -14,7 +14,7 @@ function showError(input,message){
     small.innerText = message
 }
 
-/* Show input success outline */
+
 
 function showSuccess(input){
   console.log("success")
@@ -26,10 +26,10 @@ function showSuccess(input){
 
 
 function checkEmail(emailInput) {
-  // Regular expression pattern for email validation
+
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
-  // Test the email value against the pattern
+
   if(emailPattern.test(emailInput.value.trim())){
    showSuccess(emailInput)
   }else{
@@ -37,7 +37,7 @@ function checkEmail(emailInput) {
   }
 }
 
-/* check required fields */
+
 function checkRequired(inputArr){
   inputArr.forEach(function(input){
    if(input.value ===""){
@@ -48,7 +48,7 @@ function checkRequired(inputArr){
   })
 }
 
-/* check input length */
+
 function checkLength(input,min,max){
   if(input.value.length < min){
     showError(input,`${getFieldName(input)} must be at least ${min} characters`)
@@ -60,7 +60,7 @@ function checkLength(input,min,max){
   
 }
 
-//Check password match
+
 function checkPasswordsMatch(p1,p2){
   console.log(p1.value)
   console.log(typeof p2.value)
@@ -71,13 +71,13 @@ function checkPasswordsMatch(p1,p2){
   }
 }
 
-/* Get fieldname */
+
 function getFieldName(input){
   return input.id.slice(0,1).toUpperCase()+input.id.slice(1).toLowerCase();
 }
 
 
-/* Event Listeners */
+
 form.addEventListener("submit",function(e) {
     e.preventDefault();
  
